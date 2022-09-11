@@ -1,0 +1,7 @@
+SELECT N.NAME, N.MAGORING_STUDENTS
+FROM
+(SELECT D.name, COUNT(DISTINCT M.students_id) AS "MAGORING_STUDENTS"
+FROM majors_in M, departments D
+WHERE D.id = M.departments_id
+GROUP BY D.id) AS N
+WHERE N.MAGORING_STUDENTS > 1;
